@@ -1,11 +1,12 @@
 #pragma once
 
+#include <memory>
 #include <string>
 
-#include "IContext.h"
+#include "IState.h"
 
 
-class IUnit : public IContext
+class IUnit
 {
 public:
     IUnit(const std::string& name, int hp, int pAttack, std::unique_ptr<IState> state);
@@ -13,7 +14,7 @@ public:
 
     virtual void pAttack(IUnit* target) = 0;
 
-    void print() const;
+    void switchTo(std::unique_ptr<IState> state);
 
     void setHp(const int hp);
     const int getHp() const;
@@ -21,8 +22,12 @@ public:
     void setPAttack(const int pAttack);
     const int getPAttack() const;
 
+    void print() const;
+
 protected:
     std::string m_name;
     int m_hp;
     int m_pAttack;
+
+    std::unique_ptr<IState> m_state;
 };

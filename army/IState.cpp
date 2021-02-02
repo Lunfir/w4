@@ -1,6 +1,6 @@
 #include "IState.h"
 
-void IState::setContext(IContext* context)
+void IState::setContext(IUnit* context)
 {
     this->m_context = context;
 }

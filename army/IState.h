@@ -1,6 +1,5 @@
 #pragma once
 
-class IContext;
 class IUnit;
 
 class IState
@@ -8,10 +7,10 @@ class IState
 public:
     virtual ~IState() = default;
 
-    void setContext(IContext* context);
+    void setContext(IUnit* context);
 
     virtual void attack(IUnit* target) = 0;
 
 protected:
-    IContext* m_context;
+    IUnit* m_context;
 };
